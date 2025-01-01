@@ -29,19 +29,19 @@ SKClothings is a fully functional shopping website built with modern web technol
 
 ## Admin Panel
 - **Add-Product**:Admin can add product 
-- **Delete-product**: Middleware to parse incoming request bodies
+- **Delete-product**: Admin can delete product 
 
 
 **For login as admin** 
 
-- **For login as admin**:for admin login not using database just simple username and password  
+- **For login as admin**: For admin login i tried to make its simple  just username and password  
 - 
-- **username**:username
+- **username**:
 -    ```bash
      admin@gmail.com
-    ```
+      ```
 - 
-- **password**:password
+- **password**:
 -   ```bash
      0987654321
     ```
