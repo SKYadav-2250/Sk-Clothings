@@ -26,6 +26,29 @@ SKClothings is a fully functional shopping website built with modern web technol
 
 ---
 
+
+## Admin Panel
+- **Add-Product**:Admin can add product 
+- **Delete-product**: Middleware to parse incoming request bodies
+
+
+**For login as admin** 
+
+- **For login as admin**:for admin login not using database just simple username and password  
+- 
+- **username**:username
+-    ```bash
+     admin@gmail.com
+    ```
+- 
+- **password**:password
+-   ```bash
+     0987654321
+    ```
+
+
+
+
 ## Features
 
 - User-friendly shopping interface
@@ -47,20 +70,27 @@ Follow these steps to set up the project on your local machine:
     ```
 
 
-
-
+## install the tools
+ ```bash
 npm install express mongodb cors dotenv nodemailer body-parser bcrypt
+```
 
-
-
-
+## .env ( add the require detail)
+```bash
 MONGODB_URL=your_mongodb_connection_string
 EMAIL=your_email_address
-PASSWORD=your_email_password
+PASSWORD=your_email_password (your email app security password)
 PORT=3000
+   ```
 
 
+## run the command to start the server
+```bash
 node server.js
+   ```
 
 
+## Locate the url in broowser
+```bash
 http://localhost:3000
+ ```
