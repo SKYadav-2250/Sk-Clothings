@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website | Home</title>
+    <script src="https://cdn.tailwindcss.com?version=3.3.0"></script>
+
+    <style>
+        #popup {
+   
+    position: fixed;
+    top: 24px;
+    right: 10px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 62px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+#head{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+}
+#productDescription{
+    position: fixed;
+    z-index: 200;
+
+}
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <div id="header-container" ></div>
+    <script>
+        load("header.html", "header-container");
+
+        function load(url, containerId, callback) {
+            const req = new XMLHttpRequest();
+            req.open("GET", url, true); // Asynchronous request
+            req.onload = function () {
+                if (req.status === 200) {
+                    document.getElementById(containerId).innerHTML = req.responseText;
+                    if (callback) callback(); // Execute callback if provided
+                } else {
+                    console.error("Failed to load file:", req.statusText);
+                    document.getElementById(containerId).innerHTML = "<p>Content could not be loaded.</p>";
+                }
+            };
+            req.onerror = function () {
+                console.error("Error occurred while loading the file.");
+                document.getElementById(containerId).innerHTML = "<p>Content could not be loaded.</p>";
+            };
+            req.send();
+        }
+    </script>
+
+    <!-- slider -->
+    <div id="slider-container"></div>
+    <script>
+        load("slider.html", "slider-container", function () {
+            initializeSlider(); // Call after slider content is loaded
+        });
+
+        function initializeSlider() {
+            const slider = document.getElementById("slider");
+            if (!slider) {
+                console.error("Slider element not found!");
+                return;
+            }
+
+            let currentIndex = 0;
+            const slideInterval = 3000; // Time in ms for each slide
+
+            // Function to update slider position
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            // Start auto-sliding
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slider.children.length;
+                updateSlider();
+            }, slideInterval);
+        }
+    </script>
+
+
+<div id="popup" class=" hidden z-1000 fixed top-24 right-10 bg-green-500 text-white py-4 pt-24 px-4 rounded shadow">
+    Item added to the cart!
+</div>
+
+
+
+<div id="productDescription" class="fixed  hidden bg-gradient-to-br from-gray-600 to-gary-800  h-[75%]  lg:h-[80%]  w-[60%] z-1000 top-34 lg:top-24 rounded-2xl text-black overflow-hidden  mb-8 mx-[20%] p-7 shadow-2xl backdrop-blur-2xl">
+  
+             <!-- view item show here -->
+ 
+
+</div>
+
+
+
+
+
+
+    <!-- content -->
+    <div id="content-container"></div>
+    <script>
+        load("main.html", "content-container");
+    </script>
+
+    <!-- footer -->
+    <div id="footer-container"></div>
+    <script>
+        load("footer.html", "footer-container");
+    </script>
+
+    <!-- Include index.js -->
+    <script src="index.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>

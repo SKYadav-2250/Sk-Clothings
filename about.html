@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SK Clothing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+
+    <style>
+        #head{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+}
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+
+
+  <div id="header-container" ></div>
+    <script>
+        load("header.html", "header-container");
+
+        function load(url, containerId, callback) {
+            const req = new XMLHttpRequest();
+            req.open("GET", url, true); // Asynchronous request
+            req.onload = function () {
+                if (req.status === 200) {
+                    document.getElementById(containerId).innerHTML = req.responseText;
+                    if (callback) callback(); // Execute callback if provided
+                } else {
+                    console.error("Failed to load file:", req.statusText);
+                    document.getElementById(containerId).innerHTML = "<p>Content could not be loaded.</p>";
+                }
+            };
+            req.onerror = function () {
+                console.error("Error occurred while loading the file.");
+                document.getElementById(containerId).innerHTML = "<p>Content could not be loaded.</p>";
+            };
+            req.send();
+        }
+    </script>
+
+
+
+
+
+    <!-- Hero Section -->
+    <section class="relative h-[500px] mt-20 flex items-center justify-center bg-[url('picture/img/img1.png')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">About SK Clothing</h1>
+            <p class="text-xl text-gray-200 max-w-2xl mx-auto animate-fade-in-up">
+                Where Style Meets Comfort - Redefining Fashion Since 2024
+            </p>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="text-4xl font-bold text-gray-900">Our Story</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        At SK Clothing, we are committed to offering the latest trends in fashion, combining comfort and style
+                        for every occasion. Whether you are looking for casual wear or something more formal, our collections are
+                        designed to help you look and feel your best.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        With a passion for fashion and quality craftsmanship, we source only the finest fabrics to ensure
+                        durability, comfort, and style for our customers. Join us on this fashionable journey today!
+                    </p>
+                </div>
+                <div class="relative h-[400px] rounded-lg overflow-hidden shadow-2xl">
+                    <img src="file/men/men_kurta.jpeg" alt="Our Story" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-16 bg-gray-200">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-semibold text-gray-900 mb-6">Our Mission</h3>
+            <p class="text-xl text-gray-700 mb-8">
+                Our mission is to provide high-quality clothing that blends style, comfort, and affordability. We believe
+                in sustainable fashion, and strive to bring you the best clothing made with eco-friendly practices while
+                delivering top-notch customer service.
+            </p>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-gray-900 mb-16">Our Core Values</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Quality Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Uncompromising Quality</h4>
+                        <p class="text-gray-600">
+                            We believe in offering our customers nothing but the highest quality fabrics and craftsmanship. Our
+                            clothing is built to last and maintain its look and feel over time.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sustainability Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Sustainable Fashion</h4>
+                        <p class="text-gray-600">
+                            We are committed to sustainable fashion. Our collections are made with eco-friendly materials, and we
+                            aim to reduce waste and support fair labor practices.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Customer Satisfaction Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Customer First</h4>
+                        <p class="text-gray-600">
+                            Our customers come first. We strive to ensure every shopping experience is easy, enjoyable, and
+                            seamless. Your satisfaction is our priority.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-gray-900 mb-16">Meet Our Team</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <img src="file/men/men_sweater.jpeg" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">John Doe</h4>
+                        <p class="text-gray-600 mb-4">CEO & Founder</p>
+                        <p class="text-gray-600">
+                            With over 15 years in the fashion industry, John leads our vision for sustainable and stylish clothing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <img src="file/women/blouse.jpeg" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Jane Smith</h4>
+                        <p class="text-gray-600 mb-4">Creative Director</p>
+                        <p class="text-gray-600">
+                            Jane brings innovative designs and creative solutions to our collections.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="text-center">
+                        <img src="file/men/men_tshirt.jpeg" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Michael Brown</h4>
+                        <p class="text-gray-600 mb-4">Operations Manager</p>
+                        <p class="text-gray-600">
+                            Michael ensures our operations run smoothly and efficiently.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="footer"  class="py-16 bg-gray-200">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-semibold text-gray-900 mb-6">Get in Touch</h3>
+            <p class="text-xl text-gray-700 mb-4">Have any questions or feedback? We'd love to hear from you!</p>
+            <a href="/contact" class="bg-gray-900 text-white py-3 px-6 rounded-lg hover:bg-gray-700">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 SK Clothing. All rights reserved.</p>
+            <div class="space-x-4 mt-4">
+                <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-400">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SK Clothing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #head {
+            position: fixed;
+            z-index: 100;
+            top: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-900 font-sans flex flex-col min-h-screen">
+
+    <!-- Header Section -->
+    <div id="header-container" class=""></div>
+    <script>
+        load("header.html", "header-container");
+        function load(url, containerId) {
+            const req = new XMLHttpRequest();
+            req.open("GET", url, true); // Asynchronous request
+            req.onload = function () {
+                if (req.status === 200) {
+                    document.getElementById(containerId).innerHTML = req.responseText;
+                } else {
+                    console.error("Failed to load file:", req.statusText);
+                }
+            };
+            req.onerror = function () {
+                console.error("Error occurred while loading the file.");
+            };
+            req.send();
+        }
+    </script>
+
+
+    <!-- Main Checkout Section -->
+    <div id="cartMainContainer" class="flex-grow p-8 bg-gray-900/95 backdrop-blur-sm rounded-xl shadow-2xl mt-20 mb-24 animate-fade-in">
+        <!-- Cart Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-gray-400">Checkout</h1>
+            <h3 id="totalItem" class="mt-4 text-center bg-gradient-to-r from-gray-800 to-blue-300 transform hover:shadow-black transition-all duration-300 hover:scale-105 hover:shadow-lg outline-none p-3 text-white rounded-full text-xl font-semibold mx-auto max-w-md">Total Items: 0</h3>
+        </div>
+       
+
+        <!-- Cart Items Grid -->
+        <div id="cartContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+    </div>
+
+
+    <!-- Footer Section -->
+    <div class="fixed bottom-0 left-0 w-full bg-gray-900/95 backdrop-blur-sm p-4 px-8 shadow-lg flex justify-between items-center">
+        <button id="totalPrice" class="bg-gradient-to-r from-blue-300 to-gray-800 hover:shadow-black hover:shadow-lg text-white py-3 px-8 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+            Total Price: ₹0
+        </button>
+
+        
+        <a href="payment.html">
+            <button class="bg-gradient-to-r from-gray-800 to-blue-300 hover:shadow-black hover:shadow-lg text-white py-3 px-8 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                Place Order
+            </button>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="cart.js"></script>
+    <script src="server.js"></script>
+  
+
+</body>
+</html>

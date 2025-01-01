@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #check {
+            font-size: 4rem;
+            color: #38bdf8; /* Light Blue for the checkmark */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header Section -->
+    <div id="header-container"></div>
+    <script>
+        load("header.html", "header-container");
+        function load(url, containerId) {
+            const req = new XMLHttpRequest();
+            req.open("GET", url, true); // Asynchronous request
+            req.onload = function () {
+                if (req.status === 200) {
+                    document.getElementById(containerId).innerHTML = req.responseText;
+                } else {
+                    console.error("Failed to load file:", req.statusText);
+                }
+            };
+            req.onerror = function () {
+                console.error("Error occurred while loading the file.");
+            };
+            req.send();
+        }
+    </script>
+
+    <!-- Order Placed Section -->
+    <div id="orderContainer" class="flex flex-col items-center justify-center h-screen bg-white p-8 rounded-lg shadow-lg">
+        <div id="check" class="mb-4">
+            <i class="fas fa-check-circle"></i> <!-- Font Awesome Icon -->
+        </div>
+        
+        <div id="aboutCheck" class="text-center">
+            <h1 class="text-4xl font-bold text-green-600 mb-4">Order Placed Successfully!</h1>
+            <p class="text-lg text-gray-700">
+                We've sent you an email with the order details.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div id="footer-container"></div>
+    <script>
+        load("footer.html", "footer-container");
+    </script>
+</body>
+</html>

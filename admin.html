@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Add Item</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-800  flex">
+
+    <!-- Detail Section -->
+    <div id="detail" class="  bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-2xl w-[50%] font-sans flex flex-col  min-h-screen pt-24 p-8">
+        <h1 class="text-4xl font-bold text-green-500 mb-5">About SK Clothing</h1>
+        <p class="text-lg leading-7 text-white mb-5">
+            Welcome to <span class="font-semibold text-green-400">SK Clothing</span>, your ultimate online shopping destination for stylish and high-quality men's and women's clothing. Established in 2024, we are dedicated to providing the latest trends and timeless fashion pieces that cater to your unique style.
+        </p>
+        <ul class="list-disc list-inside text-white mb-5">
+            <li>Exclusive collections for men and women.</li>
+            <li>Handpicked designs to suit every occasion.</li>
+            <li>Seamless online shopping experience.</li>
+            <li>Secure payments and fast delivery.</li>
+        </ul>
+        <p class="text-lg leading-7 text-white">
+            Our mission is to redefine online shopping by offering exceptional service and the finest clothing selection. Explore our collections and elevate your wardrobe with <span class="font-semibold text-green-400">SK Clothing</span> today!
+        </p>
+    </div>
+
+    <!-- Options Section -->
+    <div id="option" class=" bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-2xl pb-56 p-8 flex flex-col  justify-between items-center w-[50%]">
+        <h1 class="text-3xl text-white font-bold mt-12 ">Admin - Options</h1>
+        <a href="items.html">
+            <button id="remove" class="bg-gradient-to-r from-green-800 to-gray-900 hover:shadow-lg text-white py-4 px-10 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 mb-3">
+                Admin - Remove Item
+            </button>
+        </a>
+        <button id="additem" class="bg-gradient-to-r from-green-800 to-gray-900 hover:shadow-lg text-white py-4 px-14 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105">
+            Admin - Add Item
+        </button>
+    </div>
+
+    <!-- Add Items Section -->
+    <div id="additems" class="p-8 hidden max-w-xl mx-auto mt-16 mb-24 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 shadow-2xl rounded-xl">
+        <h1 class="text-3xl font-bold text-green-400 mb-6">Admin - Add Item</h1>
+        <form id="addItemForm" class="space-y-6">
+            <!-- Section Dropdown -->
+            <div>
+                <label for="section" class="block text-sm font-medium text-green-300">Section</label>
+                <select id="section" name="section" class="w-full mt-2 border rounded px-4 py-3 bg-gray-800 text-white focus:outline-none focus:ring focus:ring-green-500">
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                </select>
+            </div>
+
+            <!-- Item Name -->
+            <div>
+                <label for="name" class="block text-sm font-medium text-green-300">Item Name</label>
+                <input type="text" id="name" name="name" class="w-full mt-2 border rounded px-4 py-3 bg-gray-800 text-white focus:outline-none focus:ring focus:ring-green-500" required>
+            </div>
+
+            <!-- Item Price -->
+            <div>
+                <label for="price" class="block text-sm font-medium text-green-300">Price</label>
+                <input type="number" id="price" name="price" class="w-full mt-2 border rounded px-4 py-3 bg-gray-800 text-white focus:outline-none focus:ring focus:ring-green-500" required>
+            </div>
+
+            <!-- Item Image -->
+            <div>
+                <label for="image" class="block text-sm font-medium text-green-300">Image URL</label>
+                <input type="url" id="image" name="image" class="w-full mt-2 border rounded px-4 py-3 bg-gray-800 text-white focus:outline-none focus:ring focus:ring-green-500" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-full hover:bg-green-700 transition-all duration-300 transform hover:scale-105">
+                Add Item
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('additem').addEventListener('click', function () {
+            const additems = document.getElementById('additems');
+            const option = document.getElementById('option');
+
+            option.classList.add('hidden'); 
+            additems.classList.toggle('hidden');
+        });
+
+        document.getElementById('addItemForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const section = document.getElementById('section').value;
+            const name = document.getElementById('name').value;
+            const price = document.getElementById('price').value;
+            const image = document.getElementById('image').value;
+
+            const item = { section, name, price, image };
+
+            try {
+                const response = await fetch('/api/items', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(item),
+                });
+
+                if (response.ok) {
+                    alert('Item added successfully!');
+                    e.target.reset();
+                } else {
+                    alert('Failed to add item.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

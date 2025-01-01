@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order & Payment Confirmation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        #head{
+    position: fixed;
+    left:0;
+    z-index: 100;
+    top: 0;
+}
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans min-h-screen flex justify-center items-center">
+
+    <div id="header-container"></div>
+    <script>
+        load("header.html", "header-container");
+        function load(url, containerId) {
+            const req = new XMLHttpRequest();
+            req.open("GET", url, true); // Asynchronous request
+            req.onload = function () {
+                if (req.status === 200) {
+                    document.getElementById(containerId).innerHTML = req.responseText;
+                } else {
+                    console.error("Failed to load file:", req.statusText);
+                }
+            };
+            req.onerror = function () {
+                console.error("Error occurred while loading the file.");
+            };
+            req.send();
+        }
+    </script>
+
+<!-- /* From Uiverse.io by yohohopizza */  -->
+<!-- <div class=" fixed flex flex-row gap-2">
+  <div class="w-4 h-4 rounded-full bg-red-500 animate-bounce"></div>
+  <div
+    class="w-4 h-4 rounded-full bg-red-500 animate-bounce [animation-delay:-.3s]"
+  ></div>
+  <div
+    class="w-4 h-4 rounded-full bg-red-500 animate-bounce [animation-delay:-.5s]"
+  ></div>
+</div> -->
+
+<!-- /* From Uiverse.io by Fresnel11 */  -->
+<div id="loader"
+  class=" hidden w-10 h-10 border-4 fixed border-t-blue-500 border-gray-300 rounded-full animate-spin"
+></div>
+
+
+    
+    <div class="bg-gray-800 p-10 mt-20 rounded-xl shadow-2xl flex flex-col md:flex-row w-[90%] max-w-5xl gap-12">
+
+        <!-- QR Code Section -->
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center">
+            <div id="confermDetail" class="mb-8  text-center">
+                <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+                <h1 class="text-3xl font-bold text-green-500 mb-2">Conferm your payment</h1>
+                <p class="text-gray-300">
+                    We will sent you an email with the order details.
+                </p>
+            </div>
+            <img src="file/qrcode.jpg" alt="QR Code" class="w-64 h-64 border-4 border-green-500 rounded-lg shadow-lg">
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="w-full md:w-1/2">
+            <h1 class="text-4xl font-bold mb-8 text-green-500">Order Details</h1>
+            <div id="orderDetail" class="space-y-6 bg-gray-700 p-8 rounded-xl shadow-lg">
+                <!-- Order details will be populated here -->
+            </div>
+            <button id="placeOrderButton" class="w-full bg-green-600 text-white py-4 px-8 mt-10 rounded-xl hover:bg-green-700 transition-all duration-300 transform hover:scale-105 font-semibold text-lg">
+                <i class="fas fa-lock mr-2"></i>Confirm Payment
+            </button>
+        </div>
+    </div>
+</body>
+
+<script>
+    // Check if the current page is the payment page
+if (window.location.pathname.includes('payment.html')) {
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const cartItems = await fetchCartItems(); // Fetch items to get length and total
+            const totalCost = cartItems.reduce((total, item) => total + item.price, 0);
+            orderDetails(cartItems.length, totalCost);
+        } catch (error) {
+            console.error('Error fetching cart items for order details:', error);
+        }
+    });
+}
+
+</script>
+<script src="cart.js"></script>
+<script src="server.js"></script>
+
+
+</html>

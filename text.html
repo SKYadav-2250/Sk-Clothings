@@ -1,0 +1,62 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class=" bg-gray-900">
+    
+    
+    <div class="block relative h-48 rounded overflow-hidden">
+                    <img alt="Men's jacket" class="object-cover object-center w-full h-full block" src="file/men/mens_jacket.jpeg">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-white text-lg font-semibold">Men's Jacket</h3>
+                    <p class="text-gray-400">$89.99</p>
+                    <button onclick="addToCart('Men\'s Jacket', 89.99, 'file/men/mens_jacket.jpeg')" 
+                            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            aria-label="Add Men's Jacket to cart">
+                        Add to Cart
+                    </button>
+                </div>
+            </article>
+=======
+            <article class="py-4 hover:shadow-black lg:mx-8 mx-2 px-10 lg:px-12 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg rounded-lg hover:bg-gray-800">
+                <div class="block relative h-48 rounded overflow-hidden">
+                    <img alt="Men's jacket" class="object-cover object-center w-full h-full block" src="file/men/mens_jacket.jpeg">
+                </div>
+                <div class="mt-4">
+                    <h3 class="text-white text-lg font-semibold">Men's Jacket</h3>
+                    <p class="text-gray-400">$89.99</p>
+                    <button onclick="addToCart('Men\'s Jacket', 89.99, 'file/men/mens_jacket.jpeg')" 
+                            class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            aria-label="Add Men's Jacket to cart">
+                        Add to Cart
+                    </button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 py-6 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-white mb-4 md:mb-0">
+                    <p>&copy; 2023 Clothing Store</p>
+                    <p class="text-sm text-gray-400">All rights reserved</p>
+                </div>
+                <nav class="flex space-x-4">
+                    <a href="/about.html" class="text-gray-400 hover:text-white">About Us</a>
+                    <a href="/contact.html" class="text-gray-400 hover:text-white">Contact</a>
+                    <a href="/privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
